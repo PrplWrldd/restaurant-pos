@@ -23,7 +23,7 @@
         color: #333;
         text-decoration: none; /* Remove underline */
         padding: 4px 6px; /* Add padding */
-        position: relative; /* Add position relative */
+        margin-bottom: 20px; /* Increase bottom margin */
         border: 1px solid #333; /* Add border */
         border-radius: 5px; /* Rounded corners */
         background-color: #f8f9fa; /* Add background color */

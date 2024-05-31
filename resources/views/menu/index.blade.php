@@ -2,6 +2,39 @@
 
 @section('content')
 <div class="container">
+<style>
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .card-body{
+            padding: 20pxpx;
+        }
+        .card-body h5, .card-body p {
+        margin-bottom: 5px; /* Reduce bottom margin */
+     }
+        .card {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            color: #007bff;
+        }
+        .card-text {
+            color: #333;
+        }
+        .form-control {
+            margin-top: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+    </style>
     <h1>Menu</h1>
     <form action="{{ route('orders.store') }}" method="POST">
         @csrf
