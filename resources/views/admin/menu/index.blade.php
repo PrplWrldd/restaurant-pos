@@ -31,11 +31,24 @@
         .table td {
             padding: 10px;
         }
+        .btn-warning, .btn-danger {
+        text-decoration: none;
+        color: #ffffff; /* White text */
+        padding: 10px 20px; /* Add padding */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease; /* Transition effect */
+        }
         .btn-warning {
             background-color: #ffc107;
         }
+        .btn-warning:hover {
+            background-color: #cc8e00; /* Darker shade when hovered */
+        }
         .btn-danger {
             background-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #b02a37; /* Darker shade when hovered */
         }
     </style>
     <h1>Menu Items</h1>
