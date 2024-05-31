@@ -10,21 +10,32 @@
             font-family: Arial, sans-serif;
         }
         .navbar {
-            background-color: #f8f9fa;
-        }
-        .navbar-brand {
-            color: #333;
-            font-size: 24px;
-        }
-        .nav-link {
-            color: #333;
-        }
-        .nav-link:hover {
-            color: #007bff;
-        }
-        .container {
-            margin-top: 20px;
-        }
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+    .navbar-brand {
+        color: #333;
+        font-weight: bold; /* Make the brand name bold */
+    }
+    .nav-item {
+        margin-right: 40px; /* Increase right margin */
+    }
+    .nav-link {
+        color: #333;
+        text-decoration: none; /* Remove underline */
+        padding: 4px 6px; /* Add padding */
+        position: relative; /* Add position relative */
+        border: 1px solid #333; /* Add border */
+        border-radius: 5px; /* Rounded corners */
+        background-color: #f8f9fa; /* Add background color */
+        transition: color 0.3s ease, background-color 0.3s ease; /* Transition effect */
+    }
+    .nav-link:hover {
+        color: #007bff;
+        background-color: #e2e6ea; /* Darker shade when hovered */
+    }
+    .container {
+        margin-top: 20px;
+    }
     </style>
 </head>
 <body>
