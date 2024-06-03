@@ -8,14 +8,30 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            align-items: center;
         }
         .navbar {
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        background-color: orange;
     }
+    
     .navbar-brand {
+        text-effect: none;
         color: #333;
         font-weight: bold; /* Make the brand name bold */
+        font-size: 1.5em; /* Increase font size */
+        text-transform: uppercase; /* Convert text to uppercase */
+        letter-spacing: 2px; /* Increase spacing between letters */
+        transition: color 0.3s ease; /* Add transition for color change */
     }
+    .navbar-collapse   {
+    align-items: center; /* Align the nav items in the center vertically */
+    }
+
+    .navbar-brand:hover {
+        color: #ff6347; /* Change color on hover */
+    }
+
     .nav-item {
         margin-right: 40px; /* Increase right margin */
     }
@@ -41,8 +57,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Restaurant POS</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('orders.create') }}">Menu</a>
                 </li>
