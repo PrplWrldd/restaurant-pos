@@ -1,4 +1,4 @@
-HOW TO RUN PROJECT IN YOUR PC
+**HOW TO RUN PROJECT IN YOUR PC**
 
 1. Clone the Git Repository
 Open your terminal or command prompt.
