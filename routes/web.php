@@ -15,9 +15,7 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MenuItemController::class, 'index']);
 
 
 Route::resource('menu-items', MenuItemController::class);
