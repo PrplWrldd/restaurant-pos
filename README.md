@@ -3,7 +3,7 @@
 1. Clone the Git Repository
 Open your terminal or command prompt.
 Navigate to your desired project directory.
-Use the git clone command to clone the repository.
+Use the git clone command to clone the repository. Or just use Github desktop
 ```
 git clone <repository_url> <folder_name>
 ```
