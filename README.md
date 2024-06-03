@@ -1,3 +1,5 @@
+HOW TO RUN PROJECT IN YOUR PC
+
 1. Clone the Git Repository
 Open your terminal or command prompt.
 Navigate to your desired project directory.
@@ -15,6 +17,7 @@ composer install
 3. Setup .env
 Duplicate the .env.example file and rename it to .env.
 Open the .env file and set your database connection details.
+**Make an empty database first.**
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
