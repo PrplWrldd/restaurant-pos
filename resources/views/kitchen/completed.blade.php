@@ -44,3 +44,23 @@
     @endif
 </div>
 @endsection
+
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function fetchCompletedOrders() {
+        $.ajax({
+            url: '{{ route('orders.completed') }}',
+            type: 'GET',
+            success: function(data) {
+                $('#completed-orders').html(data);
+            }
+        });
+    }
+
+    $(document).ready(function(){
+        fetchCompletedOrders();
+        setInterval(fetchCompletedOrders, 5000); // Refresh every 5 seconds
+    });
+</script>
+@endsection

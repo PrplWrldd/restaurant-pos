@@ -17,6 +17,11 @@ class OrderController extends Controller
     public function completed()
     {
         $completedOrders = Order::completed()->get();
+
+        if (request()->ajax()) {
+            return view('kitchen.partials.completed-orders', compact('completedOrders'))->render();
+        }
+        
         return view('kitchen.completed', compact('completedOrders'));
     }
 
@@ -44,6 +49,13 @@ class OrderController extends Controller
         $order->status = 'completed';
         $order->save();
         return redirect()->route('orders.index')->with('success', 'Order completed.');
+    }
+    public function markAsCompleted(Request $request, Order $order)
+    {
+        $order->status = 'completed';
+        $order->save();
+
+        return response()->json(['success' => true, 'message' => 'Order marked as completed.']);
     }
     public function destroy(Order $order)
     {

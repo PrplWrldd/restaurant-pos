@@ -74,3 +74,30 @@
     @endif
 </div>
 @endsection
+
+
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.complete-order').on('click', function(){
+            let orderId = $(this).data('order-id');
+            let card = $(this).closest('.order-card');
+
+            $.ajax({
+                url: `/orders/${orderId}/complete`,
+                type: 'PUT',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if(response.success) {
+                        card.remove();
+                        alert(response.message);
+                    }
+                }
+            });
+        });
+    });
+</script>
+@endsection
