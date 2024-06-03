@@ -13,6 +13,12 @@ class OrderController extends Controller
         $orders = Order::all();
         return view('kitchen.index', compact('orders'));
     }
+    
+    public function completed()
+    {
+        $completedOrders = Order::completed()->get();
+        return view('kitchen.completed', compact('completedOrders'));
+    }
 
     public function create()
     {
@@ -38,5 +44,10 @@ class OrderController extends Controller
         $order->status = 'completed';
         $order->save();
         return redirect()->route('orders.index')->with('success', 'Order completed.');
+    }
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
     }
 }

@@ -52,6 +52,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('orders.index') }}">Kitchen</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ route('orders.completed') }}">Completed Orders</a>
+                </li>
             </ul>
         </div>
     </nav>

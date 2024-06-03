@@ -43,6 +43,7 @@
                             @foreach(json_decode($order->items, true) as $itemId => $quantity)
                                 {{ $quantity }} x {{ \App\Models\MenuItem::find($itemId)->name }}<br>
                             @endforeach
+                            <p>Status: {{ $order->status }}</p>
                         @endif
                     </p>
                     <form action="{{ route('orders.update', $order) }}" method="POST">

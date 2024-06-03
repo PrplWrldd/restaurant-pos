@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::resource('menu-items', MenuItemController::class);
 
 Route::resource('orders', OrderController::class);
+
+Route::get('completed-orders', [OrderController::class, 'completed'])->name('orders.completed');
