@@ -28,6 +28,18 @@
         background-color: #218838;
         border-color: #1e7e34;
     }
+    .btn-danger {
+        background-color: red;
+        border-color: #dc3545;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
 </style>
 <div class="container">
     <h1>Orders</h1>
@@ -51,6 +63,11 @@
                         @method('PUT')
                         <button type="submit" class="btn btn-success">Mark as Completed</button>
                     </form>
+                    <form action="{{ route('orders.destroy', $order) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete Order</button>
+                </form>
                 </div>
             </div>
         @endforeach
