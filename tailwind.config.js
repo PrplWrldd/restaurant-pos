@@ -6,6 +6,10 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
+    fontFamily: {
+      'serif': ['Young Serif'],
+      'sans': ['Noto sans'],
+    },
     container: {
       center:true,
       padding:'2rem'
