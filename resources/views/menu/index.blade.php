@@ -1,57 +1,50 @@
-@extends('layouts.app')
+@extends("layouts.app")
 
-@section('content')
-<div class="container">
-<style>
-        h1 {
-            color: #333;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-        .card-body{
-            padding: 20pxpx;
-        }
-        .card-body h5, .card-body p {
-        margin-bottom: 5px; /* Reduce bottom margin */
-     }
-        .card {
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 10px;
-        }
-        .card-title {
-            font-size: 1.5em;
-            color: #007bff;
-        }
-        .card-text {
-            color: #333;
-        }
-        .form-control {
-            margin-top: 10px;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-            color: #ffffff;
-            margin-top: 20px;
-        }
-    </style>
-    <h1>Menu</h1>
-    @foreach($menuItems as $item)
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">{{ $item->name }}</h5>
-                <p class="card-text">{{ $item->description }}</p>
-                <p class="card-text">${{ $item->price }}</p>
-                @if($item->image_path)
-                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="img-fluid">
-                @endif
-                <form action="{{ route('orders.store') }}" method="POST" class="mt-3">
-                    @csrf
-                    <input type="hidden" name="items[{{ $item->id }}]" value="1">
-                    <button type="submit" class="btn btn-primary">Order</button>
-                </form>
-            </div>
+@section("content")
+    <div class="py-5">
+        <h1 class="text-4xl font-black">All Menu</h1>
+        <div class="grid grid-cols-1 gap-3 py-5 md:grid-cols-3 xl:grid-cols-4">
+            @foreach ($menuItems as $item)
+                <div
+                    class="flex flex-col justify-between overflow-hidden rounded-md bg-orange-50 p-3"
+                >
+                    @if ($item->image_path)
+                        <img
+                            src="{{ asset("storage/" . $item->image_path) }}"
+                            class="h-52 transform overflow-hidden rounded-lg object-cover transition duration-300 ease-in-out hover:scale-105"
+                        />
+                    @endif
+
+                    <div class="flex justify-between p-3">
+                        <div class="flex flex-col">
+                            <h4 class="max-w-36 font-semibold">
+                                {{ $item->name }}
+                            </h4>
+                            <p>RM{{ $item->price }}</p>
+                        </div>
+                        <p class="text-xs">{{ $item->description }}</p>
+                    </div>
+
+                    <form
+                        action="{{ route("orders.store") }}"
+                        method="POST"
+                        class="mt-3"
+                    >
+                        @csrf
+                        <input
+                            type="hidden"
+                            name="items[{{ $item->id }}]"
+                            value="1"
+                        />
+                        <button
+                            type="submit"
+                            class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70"
+                        >
+                            Place order
+                        </button>
+                    </form>
+                </div>
+            @endforeach
         </div>
-    @endforeach
-</div>
+    </div>
 @endsection
