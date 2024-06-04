@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,12 @@ Route::resource('orders', OrderController::class);
 Route::get('completed-orders', [OrderController::class, 'completed'])->name('orders.completed');
 
 Route::put('orders/{order}/complete', [OrderController::class, 'markAsCompleted'])->name('orders.markAsCompleted'); // New route for AJAX
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/admin', 'AdminController@index')->middleware('auth');
+
+
+
