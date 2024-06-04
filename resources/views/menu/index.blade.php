@@ -42,7 +42,7 @@
                         <input
                             type="number"
                             name="items[{{ $item->id }}]"
-                            class='form-control'
+                            class='form-control p-1 rounded-lg border w-full'
                             placeholder="Quantity"
                         />
                     
