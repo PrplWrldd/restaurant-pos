@@ -45,15 +45,28 @@ class OrderController extends Controller
         $order = new Order();
         $order->items = json_encode($request->items);
         $order->save();
-        $orderSaved = $order->save();
 
+        // Calculate the total price
+        $totalPrice = 0;
+        foreach ($request->items as $itemId => $quantity) {
+        $menuItem = MenuItem::find($itemId);
+        if ($menuItem) {
+            $totalPrice += $menuItem->price * $quantity;
+        }
+        }
+
+
+        $orderSaved = $order->save();
+        
         if ($orderSaved) {
-            session()->flash('message1', 'Order placed successfully.');
+            // Include the total price in the success message
+            session()->flash('message1', 'Order placed successfully. Total price: RM' . $totalPrice);
         } else {
             session()->flash('message', 'No order was placed.');
         }
-
-        return redirect()->route('menu-items.index')->with('success', 'Order placed successfully.');
+    
+        return redirect()->route('menu-items.index')->with('success', 'Order placed successfully. Total price: RM' . $totalPrice);
+        
     }
 
     public function show(Order $order)

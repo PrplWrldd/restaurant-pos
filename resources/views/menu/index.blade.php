@@ -50,7 +50,7 @@
                             class='form-control p-1 rounded-lg border w-full'
                             placeholder="Quantity"
                         />
-                    
+                        <input type="hidden" name="total_price" id="total_price" value="0">
                 </div>
             @endforeach
             
