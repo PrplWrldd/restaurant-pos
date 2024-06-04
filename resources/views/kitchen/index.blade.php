@@ -66,7 +66,7 @@
             $('#flashmessage').fadeOut('slow');
         }, 3000); // 3000ms = 3 seconds
 
-         $('#close-session-message').on('click', function() {
+        $('#close-session-message').on('click', function() {
             $('#flashmessage').fadeOut('slow');
         });
 
