@@ -4,9 +4,14 @@
 @section("content")
     <div class="container">
     <div>
-        @if (session()->has('message'))
+        @if (session()->has('message1'))
             <div class="p-4 bg-green-500 font-semibold text-white rounded-lg">
-                {{ session('message') }}
+                {{ session('message1') }}
+            </div>
+        @endif
+        @if (session()->has('message2'))
+            <div class="p-4 bg-red-500 font-semibold text-white rounded-lg">
+                {{ session('message2') }}
             </div>
         @endif
     </div>

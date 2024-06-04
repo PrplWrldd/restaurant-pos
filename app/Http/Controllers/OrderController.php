@@ -33,16 +33,22 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'items.*' => 'required|integer|min:1',
-        ]);
+            // Check if any item has a quantity greater than 0
+        $hasQuantity = collect($request->items)->contains(function ($value, $key) {
+            return (int)$value > 0;
+        });
+
+        if (!$hasQuantity) {
+            session()->flash('message2', 'No order was placed. Please enter a quantity.');
+            return redirect()->route('menu-items.index');
+        }
         $order = new Order();
         $order->items = json_encode($request->items);
         $order->save();
         $orderSaved = $order->save();
 
         if ($orderSaved) {
-            session()->flash('message', 'Order placed successfully.');
+            session()->flash('message1', 'Order placed successfully.');
         } else {
             session()->flash('message', 'No order was placed.');
         }
