@@ -51,8 +51,7 @@
             background-color: #b02a37; /* Darker shade when hovered */
         }
     </style>
-    <h1>Menu Items</h1>
-
+    <h1 class="text-2xl font-black ">Menu Items</h1>
 <a href="{{ route('menu-items.create') }}" class="btn btn-primary mb-3">Add New Menu Item</a>
 
 @if($menuItems->isEmpty())
@@ -80,11 +79,12 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('menu-items.edit', $menuItem->id) }}" class="btn btn-warning">Edit</a>
+                        <div class="flex flex-col md:flex-row gap-1">
+                            <a href="{{ route('menu-items.edit', $menuItem->id) }}" class="btn btn-warning w-24">Edit</a>
                         <form action="{{ route('menu-items.destroy', $menuItem->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger w-24">Delete</button>
                         </form>
                     </td>
                 </tr>
