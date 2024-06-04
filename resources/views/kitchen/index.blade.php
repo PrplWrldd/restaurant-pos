@@ -24,14 +24,16 @@
                     <h5 class="card-title text-xl font-bold">Order #{{ $order->id }}</h5>
                     <p class="card-text text-lg mt-2">
                         @if(is_string($order->items) && is_array(json_decode($order->items, true)) && (json_last_error() == JSON_ERROR_NONE))
-                            @php
-                                $items = json_decode($order->items, true);
-                                $items = array_filter($items, function($itemId) {
-                                    return \App\Models\MenuItem::find($itemId) !== null;
-                                });
-                            @endphp
+                        @php
+                            $items = json_decode($order->items, true);
+                            $items = array_filter($items, function($quantity, $itemId) {
+                                return \App\Models\MenuItem::where('id', $itemId)->exists() ? \App\Models\MenuItem::find($itemId)->name : '';
+                            }, ARRAY_FILTER_USE_BOTH);
                             
-                            @foreach($items as $itemId => $quantity)
+                        @endphp
+                            
+                        @foreach($items as $itemId => $quantity)
+                            @if($quantity !== null)
                                 @php
                                     $menuItem = \App\Models\MenuItem::find($itemId);
                                 @endphp
@@ -40,7 +42,8 @@
                                 @else
                                     <p>Item not found</p>
                                 @endif
-                            @endforeach
+                            @endif
+                        @endforeach
 
                             <p class="mt-2">Status: {{ $order->status }}</p>
                         @endif
