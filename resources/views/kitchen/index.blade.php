@@ -4,6 +4,7 @@
 
 <div class=" mt-5">
     <h1 class="pl-10 text-3xl font-bold mb-6">Orders</h1>
+    <div class="pl-10 text-lg mb-4">Total Orders: {{ $orders->count() }}</div>
     <div>
         @if (session()->has('message'))
             <div id="flashmessage" class="flex justify-between p-4 rounded-lg bg-red-500 text-white">
