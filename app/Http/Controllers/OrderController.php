@@ -36,7 +36,7 @@ class OrderController extends Controller
         $order = new Order();
         $order->items = json_encode($request->items);
         $order->save();
-        return redirect()->route('orders.create')->with('success', 'Order placed successfully.');
+        return redirect()->route('menu-items.index')->with('success', 'Order placed successfully.');
     }
 
     public function show(Order $order)
