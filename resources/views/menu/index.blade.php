@@ -2,8 +2,8 @@
 
 
 @section("content")
-    <div class="py-5">
-        <h1 class="text-4xl font-black">All Menu</h1>
+    <div class="container">
+        <h1 class="p-4 text-2xl font-black">All Menu</h1>
         <div class="grid grid-cols-1 gap-3 py-5 md:grid-cols-3 xl:grid-cols-4">
             @foreach ($menuItems as $item)
                 <div
@@ -11,7 +11,7 @@
                 >
                     @if ($item->image_path)
                         <img
-                            src="{{ asset("storage/" . $item->image_path) }}"
+                            src="{{ asset('storage/' . $item->image_path) }}"
                             class="h-52 transform overflow-hidden rounded-lg object-cover transition duration-300 ease-in-out hover:scale-105"
                         />
                     @endif
@@ -27,26 +27,28 @@
                     </div>
 
                     <form
-                        action="{{ route("orders.store") }}"
+                        action="{{ route('orders.store') }}"
                         method="POST"
                         class="mt-3"
                     >
                         @csrf
                         <input
-                            type="hidden"
+                            type="number"
                             name="items[{{ $item->id }}]"
-                            value="1"
+                            class='form-control'
+                            placeholder="Quantity"
                         />
-                        <button
-                            type="submit"
-                            class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70"
-                        >
-                            Place order
-                        </button>
-                    </form>
+                    
                 </div>
             @endforeach
+            
         </div>
+        <button
+        type="submit"
+        class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70"                                       >
+        Place order
+        </button>
+        </form>
     </div>
 
 @endsection

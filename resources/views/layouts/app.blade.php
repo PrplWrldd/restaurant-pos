@@ -9,7 +9,7 @@
     <title>Restaurant POS</title>
 </head>
 <body>
-    <nav class="flex sticky top-0 bg-orange-500 p-5 justify-around">
+    <nav class="flex sticky top-0 bg-orange-500 p-5 justify-around z-50">
         <a class="font-serif text-xl" href="#">Restaurant POS</a>
             <ul class="font-sans font-semibold hidden md:flex gap-8  ">
                 <li class="inline-flex hover:underline decoration-2 underline-offset-4">
