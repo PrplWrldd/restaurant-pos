@@ -2,55 +2,26 @@
 
 @section('content')
 
-<style>
-    .card {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        padding: 15px;
-    }
-    .card-title {
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .card-text {
-        font-size: 16px;
-    }
-    .btn-success {
-        background-color: #28a745;
-        border-color: #28a745;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-    .btn-success:hover {
-        background-color: #218838;
-        border-color: #1e7e34;
-    }
-    .btn-danger {
-        background-color: red;
-        border-color: #dc3545;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-    .btn-danger:hover {
-        background-color: #c82333;
-        border-color: #bd2130;
-    }
-</style>
-<div class="container">
-    <h1>Orders</h1>
+<div class=" mt-5">
+    <h1 class="pl-10 text-3xl font-bold mb-6">Orders</h1>
+    <div>
+        @if (session()->has('message'))
+            <div id="flashmessage" class="flex justify-between p-4 rounded-lg bg-red-500 text-white">
+                {{ session('message') }}
+                <button id="close-session-message" class="flex pr- text-xl font-bold">&times;</button>
+            </div>
+            </div>
+        @endif
+    </div>
     @if($orders->isEmpty())
-        <p>No orders available.</p>
+        <p class="text-gray-500">No orders available.</p>
     @else
         @foreach($orders as $order)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Order #{{ $order->id }}</h5>
-                    <p class="card-text">
+        <div class="card flex m-4 p-10 flex-col rounded-lg border-2 ">
+        <ul class="flex justify-around ">
+           <li><div class="card-body">
+                    <h5 class="card-title text-xl font-bold">Order #{{ $order->id }}</h5>
+                    <p class="card-text text-lg mt-2">
                         @if(is_string($order->items) && is_array(json_decode($order->items, true)) && (json_last_error() == JSON_ERROR_NONE))
                             @php
                                 $items = json_decode($order->items, true);
@@ -61,23 +32,27 @@
                             @foreach($items as $itemId => $quantity)
                                 {{ $quantity }} x {{ \App\Models\MenuItem::find($itemId)->name }}<br>
                             @endforeach
-                            <p>Status: {{ $order->status }}</p>
+                            <p class="mt-2">Status: {{ $order->status }}</p>
                         @endif
                     </p>
-                    <form action="{{ route('orders.update', $order) }}" method="POST">
+            </li >
+                   <li class="flex flex-col">
+                     <form action="{{ route('orders.update', $order) }}" method="POST" >
                         @csrf
                         @method('PUT')
-                        <button type="submit" class="btn btn-success">Mark as Completed</button>
+                        <button type="submit" class="btn-success w-44 rounded-lg p-2 border-2 border-green-400 hover:bg-green-400 hover:text-white">Mark as Complete</button>
                     </form>
-                    <form action="{{ route('orders.destroy', $order) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete Order</button>
-                </form>
-                </div>
-            </div>
+                    <form action="{{ route('orders.destroy', $order) }}" method="POST" class="mt-2">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-danger w-44 rounded-lg p-2 border-2 border-red-400 hover:bg-red-400 hover:text-white">Delete Order</button>
+                    </form>
+                </li>
+                </div>                           
+        </ul>       
         @endforeach
     @endif
+</div>
 </div>
 @endsection
 
@@ -86,6 +61,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function(){
+        // Hide session message after 3 seconds
+        setTimeout(function(){
+            $('#flashmessage').fadeOut('slow');
+        }, 3000); // 3000ms = 3 seconds
+
+         $('#close-session-message').on('click', function() {
+            $('#flashmessage').fadeOut('slow');
+        });
+
         $('.complete-order').on('click', function(){
             let orderId = $(this).data('order-id');
             let card = $(this).closest('.order-card');
@@ -106,4 +90,5 @@
         });
     });
 </script>
+
 @endsection
