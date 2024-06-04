@@ -3,6 +3,13 @@
 
 @section("content")
     <div class="container">
+    <div>
+        @if (session()->has('message'))
+            <div class="p-4 bg-green-500 font-semibold text-white rounded-lg">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
         <h1 class="p-4 text-2xl font-black">All Menu</h1>
         <div class="grid grid-cols-1 gap-3 py-5 md:grid-cols-3 xl:grid-cols-4">
             @foreach ($menuItems as $item)
@@ -45,11 +52,21 @@
         </div>
         <button
         type="submit"
-        class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70"                                       >
+        class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70"
+        onclick="refreshAfterFiveSeconds()">
         Place order
         </button>
         </form>
 
     </div>
 
+    <script>
+    function refreshAfterFiveSeconds() {
+        setTimeout(function() {
+            location.reload(true);
+        }, 5000);
+    }
+    </script>
+
 @endsection
+
