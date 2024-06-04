@@ -60,6 +60,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
+        session()->flash('message', 'Order successfully deleted.');
         return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
     }
 }
