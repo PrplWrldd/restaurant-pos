@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 @vite('resources/css/app.css')
 
-    <title>Restaurant POS</title>
+    <title>Mahallah Siddiq Cafe POS</title>
 </head>
 <body>
     <nav class="flex sticky top-0 bg-orange-500 p-5 justify-around z-50">
-        <a class="font-serif text-xl" href="#">Restaurant POS</a>
+        <a class="font-serif text-xl" href="#">Mahallah Siddiq's Cafe</a>
             <ul class="font-sans font-semibold hidden md:flex gap-8  ">
                 <li class="inline-flex hover:underline decoration-2 underline-offset-4">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
