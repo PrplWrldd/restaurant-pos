@@ -1,5 +1,6 @@
 @extends("layouts.app")
 
+
 @section("content")
     <div class="py-5">
         <h1 class="text-4xl font-black">All Menu</h1>
@@ -47,4 +48,5 @@
             @endforeach
         </div>
     </div>
+
 @endsection

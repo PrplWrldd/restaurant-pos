@@ -28,7 +28,7 @@ class OrderController extends Controller
     public function create()
     {
         $menuItems = MenuItem::all();
-        return view('menu.index', compact('menuItems'));
+        return view('admin.menu.index', compact('menuItems'));
     }
 
     public function store(Request $request)
@@ -60,6 +60,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
+        session()->flash('message', 'Order successfully deleted.');
         return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
     }
 }

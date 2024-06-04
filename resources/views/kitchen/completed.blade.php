@@ -38,7 +38,14 @@
                                 });
                             @endphp
                             @foreach($items as $itemId => $quantity)
-                                {{ $quantity }} x {{ \App\Models\MenuItem::find($itemId)->name }}<br>
+                                @php
+                                    $menuItem = \App\Models\MenuItem::find($itemId);
+                                @endphp
+                                @if($menuItem)
+                                    {{ $quantity }} x {{ $menuItem->name }}<br>
+                                @else
+                                    <p>Item not found</p>
+                                @endif
                             @endforeach
                             <p>Status: {{ $order->status }}</p>
                         @endif

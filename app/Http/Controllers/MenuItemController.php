@@ -14,7 +14,7 @@ class MenuItemController extends Controller
     public function index()
     {
         $menuItems = MenuItem::all();
-        return view('admin.menu.index', compact('menuItems'));
+        return view('menu.index', compact('menuItems'));
     }
 
     // Method to show the form for creating a new menu item
@@ -87,4 +87,6 @@ class MenuItemController extends Controller
         $menuItem->delete();
         return redirect()->route('menu-items.index')->with('success', 'Menu Item deleted successfully.');
     }
+
+    
 }
