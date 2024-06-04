@@ -35,18 +35,22 @@ Run database migrations to create tables.
 ```
 php artisan migrate
 ```
-6. Seed the Database 
+6. To connect image storage
+```
+php artisan storage:link
+```
+7. Seed the Database 
 If your project has seeders, use them to populate the database with sample data.
 ```
 php artisan db:seed
 ```
-7. Install Node.js Dependencies 
+8. Install Node.js Dependencies 
 If your project uses JavaScript or CSS, install Node.js dependencies.
 ```
 npm install
 ```
 
-8. Compile Assets 
+9. Compile Assets 
 Compile JavaScript and CSS assets with Laravel Mix.
 ```
  npm run dev
