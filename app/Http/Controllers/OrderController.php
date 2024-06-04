@@ -33,9 +33,20 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'items.*' => 'required|integer|min:1',
+        ]);
         $order = new Order();
         $order->items = json_encode($request->items);
         $order->save();
+        $orderSaved = $order->save();
+
+        if ($orderSaved) {
+            session()->flash('message', 'Order placed successfully.');
+        } else {
+            session()->flash('message', 'No order was placed.');
+        }
+
         return redirect()->route('menu-items.index')->with('success', 'Order placed successfully.');
     }
 
