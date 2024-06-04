@@ -52,13 +52,19 @@
         }
     </style>
     <h1>Menu Items</h1>
-    <a href="{{ route('menu-items.create') }}" class="btn btn-primary">Add New Item</a>
+
+<a href="{{ route('menu-items.create') }}" class="btn btn-primary mb-3">Add New Menu Item</a>
+
+@if($menuItems->isEmpty())
+    <p>No menu items available.</p>
+@else
     <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -69,8 +75,13 @@
                     <td>{{ $menuItem->price }}</td>
                     <td>{{ $menuItem->description }}</td>
                     <td>
-                        <a href="{{ route('menu-items.edit', $menuItem) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('menu-items.destroy', $menuItem) }}" method="POST" style="display:inline;">
+                        @if($menuItem->image_path)
+                            <img src="{{ Storage::url($menuItem->image_path) }}" alt="{{ $menuItem->name }}" class="img-thumbnail" style="width: 100px;">
+                        @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('menu-items.edit', $menuItem->id) }}" class="btn btn-warning">Edit</a>
+                        <form action="{{ route('menu-items.destroy', $menuItem->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
@@ -80,5 +91,6 @@
             @endforeach
         </tbody>
     </table>
+@endif
 </div>
 @endsection

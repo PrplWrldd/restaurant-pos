@@ -36,23 +36,22 @@
         }
     </style>
     <h1>Menu</h1>
-    <form action="{{ route('orders.store') }}" method="POST">
-        @csrf
-        <div class="row">
-            @foreach($menuItems as $menuItem)
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $menuItem->name }}</h5>
-                            <p class="card-text">{{ $menuItem->description }}</p>
-                            <p class="card-text">${{ $menuItem->price }}</p>
-                            <input type="number" name="items[{{ $menuItem->id }}]" class="form-control" placeholder="Quantity">
-                        </div>
-                    </div>
-                </div>
-            @endforeach
+    @foreach($menuItems as $item)
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ $item->name }}</h5>
+                <p class="card-text">{{ $item->description }}</p>
+                <p class="card-text">${{ $item->price }}</p>
+                @if($item->image_path)
+                    <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="img-fluid">
+                @endif
+                <form action="{{ route('orders.store') }}" method="POST" class="mt-3">
+                    @csrf
+                    <input type="hidden" name="items[{{ $item->id }}]" value="1">
+                    <button type="submit" class="btn btn-primary">Order</button>
+                </form>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Place Order</button>
-    </form>
+    @endforeach
 </div>
 @endsection

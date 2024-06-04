@@ -12,6 +12,7 @@ class MenuItem extends Model
         'name',
         'price',
         'description',
-        '_token'
+        '_token',
+        'image_path'
     ];
 }
