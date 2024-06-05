@@ -1,16 +1,15 @@
 @extends("layouts.app")
 
-
 @section("content")
     <div class="container">
     <div>
         @if (session()->has('message1'))
-            <div class="p-4 bg-green-500 font-semibold text-white rounded-lg">
+            <div id="flashmessage" class="p-4 bg-green-500 font-semibold text-white rounded-lg">
                 {{ session('message1') }}
             </div>
         @endif
         @if (session()->has('message2'))
-            <div class="p-4 bg-red-500 font-semibold text-white rounded-lg">
+            <div id="flashmessage" class="p-4 bg-red-500 font-semibold text-white rounded-lg">
                 {{ session('message2') }}
             </div>
         @endif
@@ -57,21 +56,25 @@
         </div>
         <button
         type="submit"
-        class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70"
-        onclick="refreshAfterFiveSeconds()">
+        class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70">
         Place order
         </button>
         </form>
 
     </div>
 
-    <script>
-    function refreshAfterFiveSeconds() {
-        setTimeout(function() {
-            location.reload(true);
-        }, 5000);
-    }
-    </script>
+    
 
+@yield("scripts")
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+$(document).ready(function(){
+        // Hide session message after 3 seconds
+        setTimeout(function(){
+            $('#flashmessage').fadeOut('slow');
+        }, 3000); // 3000ms = 3 seconds
+});
+    </script>
 @endsection
+
 

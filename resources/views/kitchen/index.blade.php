@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class=" mt-5">
     <h1 class="pl-10 text-3xl font-bold mb-6">Orders</h1>
     <div class="pl-10 text-lg mb-4">Total Orders: {{ $orders->count() }}</div>
@@ -18,7 +17,7 @@
         <p class="text-gray-500">No orders available.</p>
     @else
         @foreach($orders as $order)
-        <div class="card flex m-4 p-10 flex-col rounded-lg border-2 ">
+        <div class="flex m-4 p-10 flex-col rounded-lg border-2 ">
         <ul class="flex justify-around ">
            <li><div class="card-body">
                     <h5 class="card-title text-xl font-bold">Order #{{ $order->id }}</h5>
@@ -67,22 +66,17 @@
     @endif
 </div>
 </div>
-@endsection
 
 
-@section('scripts')
+@yield("scripts")
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function(){
         // Hide session message after 3 seconds
         setTimeout(function(){
             $('#flashmessage').fadeOut('slow');
-        }, 3000); // 3000ms = 3 seconds
-
-        $('#close-session-message').on('click', function() {
-            $('#flashmessage').fadeOut('slow');
-        });
-
+        }, 1000); // 3000ms = 3 seconds
+        
         $('.complete-order').on('click', function(){
             let orderId = $(this).data('order-id');
             let card = $(this).closest('.order-card');
