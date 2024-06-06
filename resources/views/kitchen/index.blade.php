@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appadmin')
 
 @section('content')
 <div class=" mt-5">
@@ -17,7 +17,7 @@
         <p class="text-gray-500">No orders available.</p>
     @else
         @foreach($orders as $order)
-        <div class="flex m-4 p-10 flex-col rounded-lg border-2 ">
+        <div class="flex m-4 px-10 py-2 flex-col rounded-lg border-2 ">
         <ul class="flex justify-around ">
            <li><div class="card-body">
                     <h5 class="card-title text-xl font-bold">Order #{{ $order->id }}</h5>
@@ -48,7 +48,7 @@
                         @endif
                     </p>
             </li >
-                   <li class="flex flex-col">
+                   <li class="flex flex-col p-10">
                      <form action="{{ route('orders.update', $order) }}" method="POST" >
                         @csrf
                         @method('PUT')
@@ -75,7 +75,7 @@
         // Hide session message after 3 seconds
         setTimeout(function(){
             $('#flashmessage').fadeOut('slow');
-        }, 1000); // 3000ms = 3 seconds
+        }, 3000); // 3000ms = 3 seconds
         
         $('.complete-order').on('click', function(){
             let orderId = $(this).data('order-id');

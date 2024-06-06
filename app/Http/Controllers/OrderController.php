@@ -80,13 +80,6 @@ class OrderController extends Controller
         $order->save();
         return redirect()->route('orders.index')->with('success', 'Order completed.');
     }
-    public function markAsCompleted(Request $request, Order $order)
-    {
-        $order->status = 'completed';
-        $order->save();
-
-        return response()->json(['success' => true, 'message' => 'Order marked as completed.']);
-    }
     public function destroy(Order $order)
     {
         $order->delete();

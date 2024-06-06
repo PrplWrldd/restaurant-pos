@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('layouts.appadmin')
 
 @section('content')
 <div class="container">
@@ -43,10 +43,8 @@
             @endif
         @endforeach
     @endif
-
-    
 </div>
-@endsection
+
 
 @yield('scripts')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

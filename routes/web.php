@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PickupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +31,16 @@ Route::get('completed-orders', [OrderController::class, 'completed'])->name('ord
 Route::put('orders/{order}/complete', [OrderController::class, 'markAsCompleted'])->name('orders.markAsCompleted'); // New route for AJAX
 Auth::routes();
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/menu/{menuItem}', [MenuItemController::class, 'destroy'])->name('menu.destroy');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('/menu', [MenuItemController::class, 'store'])->name('menu.store');
 
 Route::get('/admin', 'AdminController@index')->middleware('auth');
 
+Route::get('/pickup', [PickupController::class, 'index'])->name('menu.pickup');
 
 

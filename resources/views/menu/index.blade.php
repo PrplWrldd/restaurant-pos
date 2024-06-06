@@ -60,7 +60,6 @@
         Place order
         </button>
         </form>
-
     </div>
 
     
