@@ -45,7 +45,7 @@ class MenuItemController extends Controller
             'image_path' => $imagePath,
         ]);
 
-        return redirect()->route('menu-items.index')->with('success', 'Menu item created successfully.');
+        return redirect()->route('home')->with('success', 'Menu item created successfully.');
     }
 
     // Method to show the form for editing an existing menu item
@@ -85,8 +85,8 @@ class MenuItemController extends Controller
     public function destroy(MenuItem $menuItem)
     {
         $menuItem->delete();
-        return redirect()->route('menu-items.index')->with('success', 'Menu Item deleted successfully.');
+        session()->flash('message', 'Menu successfully deleted.');
+        return redirect()->route('home')->with('success', 'Menu Item deleted successfully.');
     }
-
     
 }

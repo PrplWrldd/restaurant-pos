@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("layouts.appadmin")
 
 @section("content")
     <div class="container">
@@ -52,6 +52,13 @@
                 background-color: #b02a37; /* Darker shade when hovered */
             }
         </style>
+        <div>
+        @if (session()->has('message'))
+            <div id="flashmessage" class="flex justify-between p-4 rounded-lg bg-red-500 text-white">
+                {{ session('message') }}
+            </div>
+        @endif
+        </div>
         <h1 class="text-2xl font-black">Menu Items</h1>
         <a
             href="{{ route("menu-items.create") }}"
@@ -130,4 +137,16 @@
             </table>
         @endif
     </div>
+
+@yield("scripts")
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+        // Hide session message after 3 seconds
+        setTimeout(function(){
+            $('#flashmessage').fadeOut('slow');
+        }, 3000); // 3000ms = 3 seconds
+});
+</script>
+
 @endsection
