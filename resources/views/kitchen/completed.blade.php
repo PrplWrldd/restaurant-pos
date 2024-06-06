@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <h1 class="ml-4 text-3xl font-bold mb-6">Completed Orders</h1>
-    
+
     @if($completedOrders->isEmpty())
         <p>No completed orders available.</p>
     @else
@@ -48,7 +48,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@yield('scripts')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     function fetchCompletedOrders() {
