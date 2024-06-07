@@ -15,9 +15,11 @@
                 <li>Time Ordered:</li>
                 <li>Order status:</li>
                 </ul> 
-                <button class=" bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold mt-10 py-2 px-4 rounded">
+                <div class="flex justify-center">
+                <button class="bg-blue-500 w-72 cursor-pointer hover:bg-blue-700 text-white font-bold mt-10 py-2 rounded">
                                 I have picked up my order
                 </button> 
+                </div>
                 </div>
             </div>
             <div>

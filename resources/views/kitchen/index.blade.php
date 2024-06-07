@@ -1,7 +1,7 @@
 @extends('layouts.appadmin')
 
 @section('content')
-<div class=" mt-5">
+<div class="flex flex-col mt-5">
     <h1 class="pl-10 text-3xl font-bold mb-6">Orders</h1>
     <div class="pl-10 text-lg mb-4">Total Orders: {{ $orders->count() }}</div>
     <div>
@@ -14,14 +14,14 @@
         @endif
     </div>
     @if($orders->isEmpty())
-        <p class="text-gray-500">No orders available.</p>
+        <p class="text-slate-500">No orders available.</p>
     @else
         @foreach($orders as $order)
-        <div class="flex m-4 px-10 py-2 flex-col rounded-lg border-2 ">
-        <ul class="flex justify-around ">
-           <li><div class="card-body">
+        <div class="flex max-w-screen-xl m-4 py-2 rounded-lg border-2 ">
+        <div class="flex card-body">
+        <div class="flex flex-wrap justify-around gap-y-4">
+           <div>
                     <h5 class="card-title text-xl font-bold">Order #{{ $order->id }}</h5>
-                    <p class="card-text text-lg mt-2">
                         @if(is_string($order->items) && is_array(json_decode($order->items, true)) && (json_last_error() == JSON_ERROR_NONE))
                         @php
                             $items = json_decode($order->items, true);
@@ -44,11 +44,11 @@
                             @endif
                         @endforeach
 
-                            <p class="mt-2">Status: {{ $order->status }}</p>
+                            <p class="text-slate-600 mt-2">Status: {{ $order->status }}</p>
                         @endif
                     </p>
-            </li >
-                   <li class="flex flex-col p-10">
+                        </div>
+                   <div class="flex flex-col px-10">
                      <form action="{{ route('orders.update', $order) }}" method="POST" >
                         @csrf
                         @method('PUT')
@@ -59,9 +59,10 @@
                         @method('DELETE')
                         <button type="submit" class="btn-danger w-44 rounded-lg p-2 border-2 border-red-400 hover:bg-red-400 hover:text-white">Delete Order</button>
                     </form>
-                </li>
-                </div>                           
-        </ul>       
+                        </div>
+                                      
+                        </div> 
+        </div>       
         @endforeach
     @endif
 </div>
