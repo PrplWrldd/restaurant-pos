@@ -56,6 +56,8 @@
                                                             Qty:
                                                             {{ $quantity }}
                                                         </p>
+                                                        <p>
+                                                             RM{{ $menuItem->price * $quantity }}
                                                         <br />
                                                     </div>
                                                 </div>
@@ -66,13 +68,13 @@
                                     @endforeach
                                 @endif
 
-                                <p>RM{{ $order->total_price }}</p>
+                                
                             </div>
                         </div>
                     @endforeach
                 @endif
                 <p class="self-end text-lg font-medium">
-                    Total due: RM{{ $orders->sum("total_price") }}
+                    Total : RM{{ $orders->sum("total_price") }}
                 </p>
             </div>
             <div class="flex w-full flex-col items-center gap-2 p-3">
