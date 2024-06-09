@@ -5,6 +5,7 @@ use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PickupController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,10 @@ use App\Http\Controllers\PickupController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::resource('menu-items', MenuItemController::class);
 

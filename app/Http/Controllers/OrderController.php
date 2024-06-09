@@ -44,7 +44,7 @@ class OrderController extends Controller
         }
         $order = new Order();
         $order->items = json_encode($request->items);
-        $order->save();
+       
 
         // Calculate the total price
         $totalPrice = 0;
@@ -52,10 +52,10 @@ class OrderController extends Controller
         $menuItem = MenuItem::find($itemId);
         if ($menuItem) {
             $totalPrice += $menuItem->price * $quantity;
-        }
+            }
         }
 
-
+        $order->total_price = $totalPrice;
         $orderSaved = $order->save();
         
         if ($orderSaved) {
