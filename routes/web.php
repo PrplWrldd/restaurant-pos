@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\HomeController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('checkout', CheckoutController::class);
 
 Route::resource('menu-items', MenuItemController::class);
 
