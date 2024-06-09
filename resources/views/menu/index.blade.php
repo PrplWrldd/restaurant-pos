@@ -74,7 +74,7 @@ $(document).ready(function(){
         }, 3000); // 3000ms = 3 seconds
         setInterval(function(){
         location.reload();
-        }, 5000); // Refresh page every 5 seconds
+        }, 8000); // Refresh page every 5 seconds
 });
     </script>
 @endsection
