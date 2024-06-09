@@ -20,7 +20,6 @@
                         <div
                             class="flex h-40 w-full justify-around border-b p-5 shadow-sm"
                         >
-                            <img src="/counter.jpg" class="w-40" alt="order" />
                             <div class="flex w-full justify-around gap-1">
                                 @if (is_string($order->items) && is_array(json_decode($order->items, true)) && json_last_error() == JSON_ERROR_NONE)
                                     @php
@@ -41,14 +40,24 @@
                                             @endphp
 
                                             @if ($menuItem)
-                                                <div
-                                                    class="flex flex-col justify-between"
-                                                >
-                                                    <p>Nasi Gorenk</p>
-                                                    <p class="italic">
-                                                        Qty: {{ $quantity }}
-                                                    </p>
-                                                    <br />
+                                                <div class="flex gap-3">
+                                                    <img
+                                                    src="{{ asset('storage/' . $menuItem->image_path) }}"
+                                                        class="w-40 rounded-lg object-cover"
+                                                        alt="order"
+                                                    />
+                                                    <div
+                                                        class="flex flex-col justify-between"
+                                                    >
+                                                        <p>
+                                                            {{ $menuItem->name }}
+                                                        </p>
+                                                        <p class="italic">
+                                                            Qty:
+                                                            {{ $quantity }}
+                                                        </p>
+                                                        <br />
+                                                    </div>
                                                 </div>
                                             @else
                                                 <p>Item not found</p>
