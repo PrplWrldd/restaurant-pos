@@ -10,9 +10,9 @@
 <body>
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <nav class="flex sticky top-0 bg-orange-500 p-5 justify-around z-50">
+    <nav class="flex top-0 bg-orange-500 p-5 justify-around z-50">
         <a class="font-serif text-xl" href="#">Admin Mahallah Siddiq's Cafe</a>
-            <ul class="font-sans font-semibold hidden md:flex gap-8  ">
+            <ul class="font-sans font-semibold md:flex gap-8  ">
 
                 <li class=" inline-flex nav-item hover:underline decoration-2 underline-offset-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">

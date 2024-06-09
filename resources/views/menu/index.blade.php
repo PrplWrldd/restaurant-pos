@@ -52,13 +52,15 @@
                         <input type="hidden" name="total_price" id="total_price" value="0">
                 </div>
             @endforeach
-            
+
         </div>
+        <div class="flex justify-center ">
         <button
         type="submit"
-        class="w-full font-medium cursor-pointer rounded-lg bg-orange-400 p-3 text-center hover:bg-orange-400/70">
-        Place order
+        class="w-2/4 font-medium cursor-pointer rounded-lg bg-orange-400 py-2 text-center hover:bg-orange-400/70">
+        Proceed to payment
         </button>
+        </div>
         </form>
     </div>
 

@@ -19,7 +19,7 @@
         @foreach($orders as $order)
         <div class="flex max-w-screen-xl m-4 py-2 rounded-lg border-2 ">
         <div class="flex card-body">
-        <div class="flex flex-wrap justify-around gap-y-4">
+        <div class="flex flex-wrap justify-around ">
            <div>
                     <h5 class="card-title text-xl font-bold">Order #{{ $order->id }}</h5>
                         @if(is_string($order->items) && is_array(json_decode($order->items, true)) && (json_last_error() == JSON_ERROR_NONE))
@@ -48,7 +48,7 @@
                         @endif
                     </p>
                         </div>
-                   <div class="flex flex-col px-10">
+                   <div class="flex flex-col py-2 px-10">
                      <form action="{{ route('orders.update', $order) }}" method="POST" >
                         @csrf
                         @method('PUT')
@@ -62,7 +62,9 @@
                         </div>
                                       
                         </div> 
-        </div>       
+                       
+        </div>   
+        </div>    
         @endforeach
     @endif
 </div>
