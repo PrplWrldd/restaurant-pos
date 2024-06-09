@@ -27,6 +27,8 @@ Route::resource('menu-items', MenuItemController::class);
 
 Route::resource('orders', OrderController::class);
 
+Route::get('/pickup', [OrderController::class, 'userOrders'])->name('orders.userOrders');
+
 Route::get('completed-orders', [OrderController::class, 'completed'])->name('orders.completed');
 
 Route::put('orders/{order}/complete', [OrderController::class, 'markAsCompleted'])->name('orders.markAsCompleted'); // New route for AJAX
@@ -42,6 +44,6 @@ Route::post('/menu', [MenuItemController::class, 'store'])->name('menu.store');
 
 Route::get('/admin', 'AdminController@index')->middleware('auth');
 
-Route::get('/pickup', [PickupController::class, 'index'])->name('menu.pickup');
+//Route::get('/pickup', [PickupController::class, 'index'])->name('menu.pickup');
 
 

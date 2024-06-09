@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class OrderController extends Controller
 {
@@ -58,6 +59,11 @@ class OrderController extends Controller
         $order->total_price = $totalPrice;
         $orderSaved = $order->save();
         
+        // Save order details in a cookie
+        $orders = json_decode(Cookie::get('user_orders', '[]'), true);
+        $orders[] = $order->id;
+        Cookie::queue('user_orders', json_encode($orders), 60 * 24 * 7); // Store for 7 days
+
         if ($orderSaved) {
             // Include the total price in the success message
             session()->flash('message1', 'Order placed successfully. Total price: RM' . $totalPrice);
@@ -67,6 +73,14 @@ class OrderController extends Controller
     
         return redirect()->route('menu-items.index')->with('success', 'Order placed successfully. Total price: RM' . $totalPrice);
         
+    }
+
+    public function userOrders()
+    {
+        $orderIds = json_decode(Cookie::get('user_orders', '[]'), true);
+        $orders = Order::whereIn('id', $orderIds)->get();
+
+        return view('menu.pickup', compact('orders'));
     }
 
     public function show(Order $order)
@@ -86,4 +100,6 @@ class OrderController extends Controller
         session()->flash('message', 'Order successfully deleted.');
         return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
     }
+
+   
 }
