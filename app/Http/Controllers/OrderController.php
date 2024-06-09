@@ -71,7 +71,7 @@ class OrderController extends Controller
             session()->flash('message', 'No order was placed.');
         }
     
-        return redirect()->route('menu-items.index')->with('success', 'Order placed successfully. Total price: RM' . $totalPrice);
+        return redirect()->route('checkout.index')->with('success', 'Order placed successfully. Total price: RM' . $totalPrice);
         
     }
 
