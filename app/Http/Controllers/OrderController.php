@@ -98,7 +98,7 @@ class OrderController extends Controller
     {
         $order->delete();
         session()->flash('message', 'Order successfully deleted.');
-        return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
+        return redirect()->back()->with('success', 'Order deleted successfully.');
     }
 
    

@@ -78,7 +78,7 @@ class MenuItemController extends Controller
             'image_path' => $menuItem->image_path,
         ]);
 
-        return redirect()->route('menu-items.index')->with('success', 'Menu item updated successfully.');
+        return redirect()->route('home')->with('success', 'Menu item updated successfully.');
     }
 
     // Method to delete a menu item

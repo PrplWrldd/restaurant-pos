@@ -59,7 +59,7 @@
             </div>
         @endif
         </div>
-        <h1 class="text-2xl font-black">Menu Items</h1>
+        <h1 class="text-2xl font-black mb-4">Menu Items</h1>
         <a
             href="{{ route("menu-items.create") }}"
             class="btn btn-primary mb-3"

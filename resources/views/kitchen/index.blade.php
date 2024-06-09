@@ -77,24 +77,9 @@
             $('#flashmessage').fadeOut('slow');
         }, 3000); // 3000ms = 3 seconds
         
-        $('.complete-order').on('click', function(){
-            let orderId = $(this).data('order-id');
-            let card = $(this).closest('.order-card');
-
-            $.ajax({
-                url: `/orders/${orderId}/complete`,
-                type: 'PUT',
-                data: {
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    if(response.success) {
-                        card.remove();
-                        alert(response.message);
-                    }
-                }
-            });
-        });
+        setInterval(function(){
+        location.reload();
+        }, 2000); // Refresh page every 2 seconds
     });
 </script>
 
