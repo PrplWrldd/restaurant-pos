@@ -79,7 +79,7 @@
         
         setInterval(function(){
         location.reload();
-        }, 2000); // Refresh page every 2 seconds
+        }, 5000); // Refresh page every 5 seconds
     });
 </script>
 
