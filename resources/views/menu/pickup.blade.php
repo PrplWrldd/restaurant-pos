@@ -46,7 +46,7 @@
             </div> 
             
             @if($order->status == 'completed')
-                <audio src="{{ asset('audio/decide.mp3') }}" autoplay></audio>
+                <audio src="{{ asset('audio/Your order is complete p 1.wav') }}" autoplay></audio>
             @endif
             @endforeach
         @endif
@@ -62,7 +62,7 @@
 $(document).ready(function(){
     setInterval(function(){
         location.reload();
-    }, 3000); // Refresh page every 3 seconds
+    }, 5000); // Refresh page every 3 seconds
 });
 </script>
 
