@@ -44,6 +44,10 @@
                 <button type="submit" class=" bg-blue-500 cursor-pointer hover:bg-blue-700 text-white font-bold mt-10 py-2 px-4 rounded">Pickup Order</button>
                 </form>
             </div> 
+            
+            @if($order->status == 'completed')
+                <audio src="{{ asset('audio/decide.mp3') }}" autoplay></audio>
+            @endif
             @endforeach
         @endif
         <div>
