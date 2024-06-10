@@ -76,9 +76,6 @@
                 <p class="self-end text-lg font-medium">
                     Total : RM{{ $orders->sum("total_price") }}
                 </p>
-                <a href="pickup" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-    Proceed to payment
-</a>
             </div>
             <div class="flex w-full flex-col items-center gap-2 p-3">
                 <h3 class="text-2xl">Select payment method</h3>
